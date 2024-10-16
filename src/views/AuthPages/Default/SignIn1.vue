@@ -37,12 +37,20 @@ export default {
       emailAddress: ''
     }
   },
+  mounted () {
+    const userType = this.$cookies.get('type')
+    if (userType) {
+      this.$router.push({ path: '/' })
+    }
+  },
   methods: {
     onClickLogin () {
       if (this.emailAddress.includes('user')) {
         this.$cookies.set('type', 'USER')
       } else if (this.emailAddress.includes('mediator')) {
         this.$cookies.set('type', 'MEDIATOR')
+      } else {
+        this.$cookies.set('type', 'ADMIN')
       }
       this.$cookies.set('hasSession', 'true')
       this.$router.push({ path: '/' })

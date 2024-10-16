@@ -9,13 +9,13 @@
       <NavBarStyle1 title="Dashboard" :homeURL="{ name: 'dashboard1.home' }" :logo="logo">
         <template slot="responsiveRight">
           <ul class="navbar-nav ml-auto navbar-list">
-            <li class="nav-item">
+            <li class="nav-item" style="display: none;">
               <a class="search-toggle iq-waves-effect" href="#"><i class="ri-search-line"></i></a>
               <form action="#" class="search-box">
                 <input type="text" class="text search-input" placeholder="Type here to search..." />
               </form>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" style="display: none;">
               <a href="#" class="search-toggle iq-waves-effect"><i class="ri-mail-line"></i></a>
               <div class="iq-sub-dropdown">
                 <div class="iq-card shadow-none m-0">
@@ -82,15 +82,15 @@
                 </div>
               </div>
             </li>
-            <li class="nav-item iq-film-block" v-show="showNavTicket" @click="rightSideBar">
+            <li class="nav-item iq-film-block" v-show="showNavTicket" @click="rightSideBar" style="display: none;">
               <a href="javascript:void(0)" class="iq-waves-effect"><i class="ri-film-line" />
                 <span class="menu-tag">{{ numberOfTicket }}</span>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item"  style="display: none;">
               <a href="#" class="iq-waves-effect"><i class="ri-shopping-cart-2-line"></i></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item"  style="display: none;">
               <a href="#" class="search-toggle iq-waves-effect"><i class="ri-notification-2-line"></i></a>
               <div class="iq-sub-dropdown">
                 <div class="iq-card shadow-none m-0">
@@ -160,55 +160,10 @@
                 <div class="iq-card shadow-none m-0">
                   <div class="iq-card-body p-0 ">
                     <div class="bg-primary p-3">
-                      <h5 class="mb-0 text-white line-height">Hello Nik jone</h5>
-                      <span class="text-white font-size-12">Available</span>
+                      <h5 class="mb-0 text-white line-height">Rahul sharma</h5>
                     </div>
-                    <a href="#" class="iq-sub-card iq-bg-primary-hover">
-                      <div class="media align-items-center">
-                        <div class="rounded iq-card-icon iq-bg-primary">
-                          <i class="ri-file-user-line"></i>
-                        </div>
-                        <div class="media-body ml-3">
-                          <h6 class="mb-0 ">My Profile</h6>
-                          <p class="mb-0 font-size-12">View personal profile details.</p>
-                        </div>
-                      </div>
-                    </a>
-                    <a href="#" class="iq-sub-card iq-bg-primary-success-hover">
-                      <div class="media align-items-center">
-                        <div class="rounded iq-card-icon iq-bg-success">
-                          <i class="ri-profile-line"></i>
-                        </div>
-                        <div class="media-body ml-3">
-                          <h6 class="mb-0 ">Edit Profile</h6>
-                          <p class="mb-0 font-size-12">Modify your personal details.</p>
-                        </div>
-                      </div>
-                    </a>
-                    <a href="#" class="iq-sub-card iq-bg-primary-danger-hover">
-                      <div class="media align-items-center">
-                        <div class="rounded iq-card-icon iq-bg-danger">
-                          <i class="ri-account-box-line"></i>
-                        </div>
-                        <div class="media-body ml-3">
-                          <h6 class="mb-0 ">Account settings</h6>
-                          <p class="mb-0 font-size-12">Manage your account parameters.</p>
-                        </div>
-                      </div>
-                    </a>
-                    <a href="#" class="iq-sub-card iq-bg-primary-secondary-hover">
-                      <div class="media align-items-center">
-                        <div class="rounded iq-card-icon iq-bg-secondary">
-                          <i class="ri-lock-line"></i>
-                        </div>
-                        <div class="media-body ml-3">
-                          <h6 class="mb-0 ">Privacy Settings</h6>
-                          <p class="mb-0 font-size-12">Control your privacy parameters.</p>
-                        </div>
-                      </div>
-                    </a>
                     <div class="d-inline-block w-100 text-center p-3">
-                      <a class="iq-bg-danger iq-sign-btn" href="#" role="button">Sign out<i class="ri-login-box-line ml-2"></i></a>
+                      <a class="iq-bg-danger iq-sign-btn" v-on:click="onClickSignOut" role="button">Sign out<i class="ri-login-box-line ml-2"></i></a>
                     </div>
                   </div>
                 </div>
@@ -226,13 +181,16 @@
     </div>
     <FooterStyle1>
       <template v-slot:left>
-        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-        <li class="list-inline-item"><a href="#">Terms of Use</a></li>
+        <li class="list-inline-item"><a href="https://kadr.live/staging/privacy-policy.html" target="_blank">Privacy Policy</a></li>
+        <li class="list-inline-item"><a href="https://kadr.live/staging/terms-and-conditions.html" target="_blank">Terms of Use</a></li>
       </template>
       <template v-slot:right>
-        Copyright 2020 <a href="#">Sofbox</a> All Rights Reserved.
+        Copyright 2024 <a href="#">KADR.live</a> | All Rights Reserved.
       </template>
     </FooterStyle1>
+    <a href="https://api.whatsapp.com/send?phone=9999999999&amp;text=Hola%21%20team." class="float" target="_blank">
+        <i class="fa fa-whatsapp my-float"></i>
+    </a>
   </div>
 </template>
 <script>
@@ -275,10 +233,17 @@ export default {
       if (this.numberOfTicket > 0) {
         this.$store.dispatch('TicketBooking/displaySidebarTicket', true)
       }
+    },
+    onClickSignOut () {
+      this.$cookies.remove('type')
+      this.$cookies.remove('hasSession')
+      this.$router.push({ path: '/auth/sign-in' })
     }
   }
 }
 </script>
 <style>
   @import url("../assets/css/custom.css");
+  .float{position:fixed;width:60px;height:60px;bottom:40px;left:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 2px 2px 3px #999;z-index:10000;}
+  .my-float{margin-top:16px;}
 </style>

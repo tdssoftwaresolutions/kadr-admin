@@ -9,7 +9,7 @@
     <div class="iq-sidebar-logo d-flex justify-content-between">
       <router-link :to="homeURL">
         <img :src="logo" class="img-fluid" alt="logo">
-        <span>Sofbox</span>
+        <span>kADR.live</span>
       </router-link>
       <div class="iq-menu-bt align-self-center">
         <div class="wrapper-menu">

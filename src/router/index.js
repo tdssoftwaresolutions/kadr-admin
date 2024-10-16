@@ -400,8 +400,8 @@ const authChildRoutes = (prop) => [
     component: SignIn1
   },
   {
-    path: 'sign-up1',
-    name: prop + '.sign-up1',
+    path: 'sign-up',
+    name: prop + '.sign-up',
     component: SignUp1
   },
   {

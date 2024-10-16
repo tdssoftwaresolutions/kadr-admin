@@ -12,7 +12,7 @@
       </div>
       <div class="navbar-breadcrumb">
         <h5 class="mb-0">{{ title }}</h5>
-        <BreadCrumbStyle1 :items="breadCrumb"/>
+        <!--BreadCrumbStyle1 :items="breadCrumb"/-->
       </div>
       <nav class="navbar navbar-expand-lg navbar-light p-0">
         <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +37,6 @@
   <!-- TOP Nav Bar END -->
 </template>
 <script>
-import BreadCrumbStyle1 from '../breadcrumbs/BreadCrumbStyle1'
 export default {
   name: 'NavBarStyle1',
   props: {
@@ -60,9 +59,6 @@ export default {
       ])
     },
     logo: { type: String, default: require('../../../assets/logo.jpeg') }
-  },
-  components: {
-    BreadCrumbStyle1
   },
   data () {
     return {
